@@ -1,0 +1,10 @@
+<resources>
+
+    <string name="app_name">HallChat</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_chat">HallChat</string>
+    <string name="chatTabTitle">Чат</string>
+    <string name="dialogsTabTitle">Диалоги</string>
+    <string name="send_message">Send</string>
+
+</resources>

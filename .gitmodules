@@ -1,0 +1,3 @@
+[submodule "src/ru/kt15/finomen"]
+	path = src/ru/kt15/finomen
+	url = git@github.com:finomen/Neerc.git

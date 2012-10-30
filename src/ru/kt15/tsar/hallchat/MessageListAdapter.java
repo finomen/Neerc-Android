@@ -2,6 +2,8 @@ package ru.kt15.tsar.hallchat;
 
 import java.util.ArrayList;
 
+import ru.kt15.finomen.neerc.hall.Message;
+
 import android.content.Context;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;

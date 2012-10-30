@@ -3,6 +3,10 @@ package ru.kt15.tsar.hallchat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import ru.kt15.finomen.neerc.hall.ChatListener;
+import ru.kt15.finomen.neerc.hall.Message;
+import ru.kt15.finomen.neerc.hall.UserInfo;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
@@ -14,7 +18,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabHost;
 
-public class ChatActivity extends Activity {
+public class ChatActivity extends Activity implements ChatListener{
 	private ListView mainChatList;
 	private MessageListAdapter mainChatAdapter;
 	private EditText newMsgText;
@@ -81,18 +85,32 @@ public class ChatActivity extends Activity {
         sendMsgButton.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				Message newMsg = new Message();
-				newMsg.fromName = "auth forgotten";
+				//FIXME: fill Message
 				newMsg.text = newMsgText.getText().toString();
-				newMsg.time = new Date();
-				
-				//TODO: send message
-				
 				newMsgText.setText("");
-				
-				mainChatAdapter.add(newMsg);
+				ConnectionManager.getChatManager().sendMessage(newMsg);
 			}
 		});
     }
+
+	public void addUser(UserInfo info) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateUser(UserInfo info) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void removeUser(String id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void newMessage(Message message) {
+		mainChatAdapter.add(message);
+	}
 
     /*
     @Override

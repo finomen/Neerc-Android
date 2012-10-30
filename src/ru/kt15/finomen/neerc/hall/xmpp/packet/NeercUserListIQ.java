@@ -6,6 +6,7 @@ import java.util.Collections;
 
 import org.xmlpull.v1.XmlPullParser;
 
+import ru.kt15.finomen.neerc.core.Log;
 import ru.kt15.finomen.neerc.hall.UserInfo;
 import ru.kt15.finomen.neerc.hall.xmpp.utils.XmlUtils;
 
@@ -73,7 +74,7 @@ public class NeercUserListIQ extends NeercIQ {
 	}
 
 	private UserInfo parseUser(XmlPullParser parser) throws Exception {
-		System.out.println(parser.getText()); //FIXME:
+		Log.writeDebug(parser.getText()); //FIXME:
 		String name = parser.getAttributeValue("", "name");
 		String group = parser.getAttributeValue("", "group");
 		boolean power = "yes".equals(parser.getAttributeValue("", "power"));

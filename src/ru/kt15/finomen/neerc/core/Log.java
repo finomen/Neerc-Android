@@ -28,15 +28,15 @@ public abstract class Log implements ILog{
 	private static class SystemLog extends Log {
 
 		public void writeError(Date time, String s) {
-			System.err.println("[ " + time.toString() + " ] ERROR: " + s);
+			android.util.Log.e("HallChat", "[ " + time.toString() + " ] ERROR: " + s);
 		}
 
 		public void writeInfo(Date time, String s) {
-			System.out.println("[ " + time.toString() + " ] INFO:  " + s);
+			android.util.Log.i("HallChat", "[ " + time.toString() + " ] ERROR: " + s);
 		}
 
 		public void writeDebug(Date time, String s) {
-			System.out.println("[ " + time.toString() + " ] DEBUG: " + s);
+			android.util.Log.d("HallChat", "[ " + time.toString() + " ] ERROR: " + s);
 		}
 		
 	}

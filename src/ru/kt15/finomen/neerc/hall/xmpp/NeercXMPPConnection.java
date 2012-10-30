@@ -110,10 +110,10 @@ public class NeercXMPPConnection implements ChatManager, TaskManager {
                 
         // Create the configuration for this new connection
         ConnectionConfiguration config = new ConnectionConfiguration(SettingsManager.instance().get("hall.chat.xmpp.server.host", "finomen.kt15.ru"), SettingsManager.instance().get("hall.chat.xmpp.server.port", 5222));
-        config.setCompressionEnabled(true);
-        config.setSASLAuthenticationEnabled(true);
+        config.setCompressionEnabled(false);
+        config.setSASLAuthenticationEnabled(false);
         config.setReconnectionAllowed(false);
-        config.setDebuggerEnabled(SettingsManager.instance().get("hall.chat.xmpp.smack.debug", false));
+        config.setDebuggerEnabled(SettingsManager.instance().get("hall.chat.xmpp.smack.debug", true));
 
         connection = new XMPPConnection(config);
         // Connect to the server
@@ -367,6 +367,16 @@ public class NeercXMPPConnection implements ChatManager, TaskManager {
                     query("ping");
                 } catch (InterruptedException e) {
                     break;
+                } catch (IllegalStateException e) {
+                	Log.writeDebug("ping failed");
+                    if (!connected) {
+                        continue;
+                    }
+                    try {
+                        disconnect();
+                    } catch (Exception ex) {
+
+                    }
                 } catch (XMPPException e) {
                     Log.writeDebug("ping failed");
                     if (!connected) {

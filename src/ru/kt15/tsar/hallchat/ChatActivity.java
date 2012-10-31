@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import ru.kt15.finomen.neerc.core.Log;
 import ru.kt15.finomen.neerc.hall.ChatListener;
 import ru.kt15.finomen.neerc.hall.Message;
+import ru.kt15.finomen.neerc.hall.Task;
+import ru.kt15.finomen.neerc.hall.TaskListener;
 import ru.kt15.finomen.neerc.hall.UserInfo;
 
 import android.os.Bundle;
@@ -19,7 +21,7 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 
-public class ChatActivity extends Activity implements ChatListener{
+public class ChatActivity extends Activity implements ChatListener, TaskListener {
 	private TabHost tabHost;
 	private TabHost.TabSpec chatTab;
 	private TabHost.TabSpec dialogsTab;
@@ -34,9 +36,11 @@ public class ChatActivity extends Activity implements ChatListener{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_chat);
+        
         ConnectionManager.Start();
         ConnectionManager.getChatManager().addListener(this);
-        setContentView(R.layout.activity_chat);
+        ConnectionManager.getTaskManager().addListener(this);
         
         unreadMsg_chatTab = 0;
         
@@ -120,6 +124,21 @@ public class ChatActivity extends Activity implements ChatListener{
 			chatTab.setIndicator(getString(R.string.chatTabTitle) + " (" + Integer.toString(unreadMsg_chatTab) + ")");
 		}
 		Log.writeInfo(message.text);
+	}
+
+	public void addTask(Task task) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void removeTask(int taskId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateTask(Task task) {
+		// TODO Auto-generated method stub
+		
 	}
 
     /*

@@ -6,5 +6,6 @@
     <string name="chatTabTitle">Чат</string>
     <string name="dialogsTabTitle">Диалоги</string>
     <string name="send_message">Send</string>
+    <string name="status_icon_desc">User status icon</string>
 
 </resources>
